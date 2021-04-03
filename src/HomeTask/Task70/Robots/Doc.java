@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Doc {
-    private List<String> details=new ArrayList<>();
-    private int countOfRobots=0;
+    private List<String> details = new ArrayList<>();
+    private int countOfRobots = 0;
 
 
     public void setDetails(List<String> details) {
@@ -16,15 +16,15 @@ public class Doc {
         return countOfRobots;
     }
 
-    public void counts(List<String> detailsOfRobot){
-        int count=0;
-        while (details.containsAll(detailsOfRobot)){
+    public void counts(List<String> detailsOfRobot) {
+        int count = 0;
+        while (details.containsAll(detailsOfRobot)) {
             count++;
-            for (String detail:detailsOfRobot){
+            for (String detail : detailsOfRobot) {
                 details.remove(detail);
             }
         }
-        countOfRobots=count;
+        countOfRobots = count;
 //        return count;
     }
 }

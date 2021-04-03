@@ -9,15 +9,15 @@ import java.util.concurrent.CyclicBarrier;
 
 public class Assistent implements Callable {
     private String name;
-    private List<String> details =new ArrayList<>();
+    private List<String> details = new ArrayList<>();
     private Fabrika fabrika;
     private Random random = new Random();
     private CyclicBarrier cyclicBarrier;
 
-    public Assistent(Fabrika fabrika, String name,CyclicBarrier cyclicBarrier) {
+    public Assistent(Fabrika fabrika, String name, CyclicBarrier cyclicBarrier) {
         this.fabrika = fabrika;
-        this.name=name;
-        this.cyclicBarrier=cyclicBarrier;
+        this.name = name;
+        this.cyclicBarrier = cyclicBarrier;
     }
 
     public List<String> getDetails() {
@@ -26,7 +26,7 @@ public class Assistent implements Callable {
 
 
     @Override
-    public List<String> call()  {
+    public List<String> call() {
         try {
             cyclicBarrier.await();
         } catch (InterruptedException | BrokenBarrierException e) {
@@ -37,8 +37,7 @@ public class Assistent implements Callable {
             details.clear();
             if (fabrika.getDetailsOfFabrika().isEmpty()) {
                 System.out.println("Помощник " + name + " уходит ни с чем");
-            }
-            else {
+            } else {
                 for (int i = 0; i < count; i++) {
                     String detail = fabrika.getDetailsOfFabrika().get(random.nextInt(fabrika.getDetailsOfFabrika().size()));
                     details.add(detail);
@@ -47,7 +46,7 @@ public class Assistent implements Callable {
                         break;
                     }
                 }
-                System.out.println("Помощник " + name + " взял :: "+ details);
+                System.out.println("Помощник " + name + " взял :: " + details);
             }
         }
 
